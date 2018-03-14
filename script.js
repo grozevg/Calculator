@@ -9,7 +9,9 @@ Calculator.prototype = {
 	init: function () {
 		document.myCalculators = document.myCalculators || [];
 		document.myCalculators.push(this);
+
 		this.createLayout();
+
 		this.str = 0;
 		this.updateDisplay();
 	},
@@ -54,21 +56,20 @@ Calculator.prototype = {
 
 	createLayout: function () {
 		var cont = document.getElementById(this.container);
+		cont.className += " gr-calculator";
 		cont.appendChild(this.createHeader());
 		cont.appendChild(this.createBody());
 	},
 
 	createHeader: function () {
 		var cHeader = document.createElement("div");
-		cHeader.innerHTML = `<div id="c-header">
-      <span id="c-display">Display</span>
-    </div>`;
+		cHeader.innerHTML = '<div id="c-header" class="c-header">Display</div>';
 		return cHeader;
 
 	},
 
 	//no function
-	createButton(text, i) {
+	createButton (text, i) {
 		var button = document.createElement("button");
 		button.innerHTML = text;
 		var buttonObserver = this.buttonObserver;
@@ -92,6 +93,9 @@ Calculator.prototype = {
 
 	createBody() {
 		var cBody = document.createElement("div");
+		cBody.id = "c-body";
+		cBody.className = "c-body";
+
 		for (var i = 0; i < 10; i++) {
 			cBody.appendChild(this.createButton(i));
 		}
@@ -105,7 +109,6 @@ Calculator.prototype = {
 		cBody.appendChild(this.createButton(")"));
 		cBody.appendChild(this.createButton("C"));
 
-		cBody.style.background = "green";
 		return cBody;
 	}
 
@@ -119,6 +122,6 @@ var a = new Calculator("myCalculator");
 
 //a.clear();
 
-function sum(string) { a.input(string) }
+//function sum(string) { a.input(string) }
 
 
