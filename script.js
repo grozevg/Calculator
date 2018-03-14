@@ -33,7 +33,6 @@ Calculator.prototype = {
 		var str = this.str;
 		var reg = /[^1-9,0,*,/,\-,+,%, ,(,)]/g;
 		var result = str.match(reg);
-		//    return ;
 		if (result || str.endsWith("+") || str.endsWith("-") || str.endsWith("*") || str.endsWith("/")) {
 			return "Invalid: " + (result || "End of character.");
 		}
@@ -51,7 +50,6 @@ Calculator.prototype = {
 	clear: function () {
 		this.str = 0;
 		this.updateDisplay();
-		//    console.log(this.output());
 	},
 
 	createLayout: function () {
@@ -68,7 +66,6 @@ Calculator.prototype = {
 
 	},
 
-	//no function
 	createButton (text, i) {
 		var button = document.createElement("button");
 		button.innerHTML = text;
@@ -78,7 +75,7 @@ Calculator.prototype = {
 
 	},
 
-	buttonObserver(a) {
+	buttonObserver (a) {
 		var currentCalc = document.myCalculators[0];
 		if (a == "C") {
 			currentCalc.clear();
@@ -91,7 +88,7 @@ Calculator.prototype = {
 		}
 	},
 
-	createBody() {
+	createBody () {
 		var cBody = document.createElement("div");
 		cBody.id = "c-body";
 		cBody.className = "c-body";
@@ -115,13 +112,4 @@ Calculator.prototype = {
 };
 
 var a = new Calculator("myCalculator");
-//sum("51 + (5 / 2 * 85 + 1)");//Invalid: End of character.
-//sum("5 / 2 * 85 + 1asd"); // Invalid: a,s,d
-//sum("5 + (5 / 2 * 85 + 1)") // 218.5
-
-
-//a.clear();
-
-//function sum(string) { a.input(string) }
-
 
